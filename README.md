@@ -11,7 +11,7 @@ Factorio-Discord-Relay (FDR) is a .jar (NOT a mod) which allows you to connect y
 - A discord bot with a valid token.
 - one channel for console messages
 - one channel for chat messages
-- Rcon enabled on the Factorio server (```/opt/factorio-init/config contains EXTRA_BINARGS at the very bottom. Add "--rcon-port <port> --rcon-password <password>" within EXTRA_BINARGS.```).
+- Rcon enabled on the Factorio server (```/opt/factorio-init/config contains EXTRA_BINARGS at the very bottom. Add "--rcon-port <port> --rcon-password <password>" within EXTRA_BINARGS```).
 
 (chat and console messages can be the same but may cause conflict).
 
