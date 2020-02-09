@@ -1,6 +1,7 @@
 package me.jaskowicz.factoriodiscordrelay.Listeners;
 
 import me.jaskowicz.factoriodiscordrelay.Main;
+import me.jaskowicz.factoriodiscordrelay.Settings.MAIN_SETTINGS;
 import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -28,21 +29,30 @@ public class MessageListener extends ListenerAdapter {
         if (event.getChannelType().equals(ChannelType.TEXT)) {
             if(event.getGuild().getId().equals(Main.guildID)) {
                 if(event.getChannel().getId().equals(Main.consoleChannelID)) {
-                    System.out.println("[Debug]: " + event.getMessage().getContentRaw() + " was fired from console.");
-                    try {
-                        /*
-                        if(Main.disabledCommands.contains(event.getMessage().getContentRaw())) {
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
-                                    .sendMessage(":x: This command is disabled.").queue();
+                    if(MAIN_SETTINGS.consoleEnabled) {
+                        System.out.println("[Debug]: " + event.getMessage().getContentRaw() + " was fired from console.");
 
-                            return;
+                        try {
+                            /*
+
+                            Soon.
+
+                            if(Main.disabledCommands.contains(event.getMessage().getContentRaw())) {
+                                Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
+                                        .sendMessage(":x: This command is disabled.").queue();
+
+                                return;
+                            }
+
+                             */
+
+                            Main.rcon.command("/command " + event.getMessage().getContentRaw());
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-
-                         */
-
-                        Main.rcon.command("/command " + event.getMessage().getContentRaw());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    } else {
+                        Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
+                                .sendMessage(":x: Discord console is currently disabled.").queue();
                     }
                 } else if(event.getChannel().getId().equals(Main.chatChannelID)) {
 

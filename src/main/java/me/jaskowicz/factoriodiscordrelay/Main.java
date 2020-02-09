@@ -31,8 +31,6 @@ public class Main {
     public static String consoleChannelID = "";
     public static String chatChannelID = "";
     //public static List<String> disabledCommands = new ArrayList<>();
-    //public static boolean advancedConsole = false;
-    //public static int playersOnline = 0;
     public static Rcon rcon;
 
     // This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -40,6 +38,8 @@ public class Main {
     // visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
     // Created by: Archie Jaskowicz.
+    // Assistance from: jschmidt-1 (ServerTask class)
+
     // All files within the packages 'Rcon' and 'Exceptions' belong to  the github user: Kronos666.
     // Rcon is a simple communication system via a port. Valve has a great documentation on this.
 
@@ -133,6 +133,12 @@ public class Main {
                             MAIN_SETTINGS.rconPort = Integer.parseInt(dataArray[1]);
                         } else if(dataArray[0].equals("rconPassword")) {
                             MAIN_SETTINGS.rconPassword = dataArray[1];
+                        } else if(dataArray[0].equals("disableDiscordConsole")) {
+                            if(dataArray[1].equalsIgnoreCase("true")) {
+                                MAIN_SETTINGS.consoleEnabled = false;
+                            } else if(dataArray[1].equalsIgnoreCase("false")) {
+                                MAIN_SETTINGS.consoleEnabled = true;
+                            }
                         }
                     } else if (dataArray.length < 2) {
                         System.out.println("Line has too little arguments on it. Ignoring line.");
@@ -168,6 +174,7 @@ public class Main {
                 fileWriter.write("rconHost: <RCON_IP>\n");
                 fileWriter.write("rconPort: <RCON_PORT>\n");
                 fileWriter.write("rconPassword: <RCON_PASSWORD>");
+                fileWriter.write("disableDiscordConsole: false");
                 fileWriter.close();
 
                 System.out.println("Default data has been placed in config file.");

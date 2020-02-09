@@ -7,4 +7,6 @@ public class MAIN_SETTINGS {
     public static String rconHost = "127.0.0.1";
     public static int rconPort = 27015;
     public static String rconPassword = "password";
+
+    public static boolean consoleEnabled = true;
 }

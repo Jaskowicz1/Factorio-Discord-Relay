@@ -12,10 +12,12 @@ import java.util.*;
 
 public class ServerTask extends TimerTask {
 
+    // Credit to Github user jschmidt-1 for making this look better.
+
     private List<String> lastResults = new ArrayList<>();
     
     private static String pretifyLogLine(String logLine) {
-    	return logLine.replaceAll("^.+\\[\\w\\]\\s(.+)$", "$1");
+        return logLine.replaceAll("^.+\\[\\S+\\]\\s(.+)$", "$1");
     }
     
     private void sendMessage(String channelId, String message) {
@@ -60,12 +62,12 @@ public class ServerTask extends TimerTask {
                 if (!results.get(0).equals(lastResults.get(0))) {
                     for(int i = 0; i < results.size(); i++) {
                         if (results.get(i).contains("[JOIN]")) {
-                        	String message = ":heavy_plus_sign: " + pretifyLogLine(results.get(i));
+                        	String message = ":green_circle: " + pretifyLogLine(results.get(i));
 
                             sendMessage(Main.chatChannelID, message);
                             break;
                         } else if (results.get(i).contains("[LEAVE]")) {
-                        	String message = ":heavy_minus_sign: " + pretifyLogLine(results.get(i));
+                        	String message = ":red_circle: " + pretifyLogLine(results.get(i));
 
                         	sendMessage(Main.chatChannelID, message);
                             break;
@@ -75,7 +77,7 @@ public class ServerTask extends TimerTask {
                         	sendMessage(Main.chatChannelID, message);
                             break;
                         } else if (results.get(i).contains("[COMMAND]")) {
-                            String message = ":exclamation: " + results.get(i);
+                            String message = ":exclamation: " + pretifyLogLine(results.get(i));
 
                             sendMessage(Main.consoleChannelID, message);
                             break;
