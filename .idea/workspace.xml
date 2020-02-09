@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbb08a6e-82f6-4e5c-ae51-422e18024c0b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Exceptions/AuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Exceptions/MalformedPacketException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Rcon/Rcon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Rcon/RconPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/factoriodiscordrelay-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/factoriodiscordrelay-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/factoriodiscordrelay-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/factoriodiscordrelay-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-factoriodiscordrelay-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-factoriodiscordrelay-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

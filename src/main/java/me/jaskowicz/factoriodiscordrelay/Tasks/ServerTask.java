@@ -29,12 +29,12 @@ public class ServerTask extends TimerTask {
                 scanner = new Scanner(file);
                 reversedLinesFileReader = new ReversedLinesFileReader(file, StandardCharsets.UTF_8);
             } catch (IOException e) {
-                System.out.println("Specified file does not exist or can not be read! Please create the file that you specified if you wish to use it.");
+                System.out.println("server.out file does not exist or can not be read! Please attempt to fix this.");
                 return;
             }
 
             if (!scanner.hasNextLine()) {
-                System.out.println("Specified file does not have any information regarding IPs and Ports (IP:PORT)!");
+                System.out.println("server.out file does not have any information!");
                 return;
             }
 
