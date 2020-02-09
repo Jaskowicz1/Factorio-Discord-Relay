@@ -1,6 +1,13 @@
 # Factorio-Discord-Relay
-Factorio-Discord-Relay (FDR) is a .jar (NOT a mod) which allows you to connect your Factorio server to discord (via discord bot) and relay information from Factorio to Discord.
+Factorio-Discord-Relay (FDR) is a .jar (NOT a Factorio mod) which allows you to connect your Factorio server to discord (via discord bot) and relay information from Factorio to Discord.
 
+Documentation sections listed here:
+ - Requirements
+ - Installation
+ - Usage
+ - Errors
+ - Credit
+ - Licence
 
 ---
 
@@ -29,8 +36,10 @@ Make sure your discord bot is in your server and has permissions to see and chat
 
 Once those values are edited correctly, save the config and run the server. If everything is setup correctly, you should see the bot come online!
 
+Take a look at the usage section for an example of the config.
 
-### FDR is NOT a mod, it can be ran from anywhere.
+
+### FDR is NOT a mod for Factorio, it can be ran from anywhere by anything (if done correctly).
 
 
 ---
@@ -40,6 +49,48 @@ Once those values are edited correctly, save the config and run the server. If e
 
 When everything is setup, you can talk in the chat channel you specified to talk in-game via discord.
 You can also talk in the console channel you specified to execute commands in the console via discord.
+
+Example config:
+```
+botToken: ************************
+chatID: 676062796890374189
+consoleID: 676064233183772702
+guildID: 652367853302972427
+serverOutFilePath: /opt/factorio/server.out
+rconHost: 127.0.0.1
+rconPort: 27015
+rconPassword: **********
+disableDiscordConsole: false
+```
+
+If you have any issues, look at the Errors section. If it doesn't list your issue or you still don't understand, feel free to write a ticket under the `Issues` tab.
+
+
+---
+
+
+# Errors
+
+There are different types of errors you may get, or issues where you don't even get an error and the program cuts out.
+
+### Actual errors
+
+ConnectionTimedOut - Rcon failed to connect in time or couldn't find the Rcon server. Check the port and/or host.
+AuthenticationException - Credentials for Rcon are incorrect. Correct the credentials.
+IOException - Either Rcon failed to send a message or a file threw an error being read. If it's the case of files (the program should say), check the permissions of that file and the program.
+
+### Hidden errors
+
+Bot loads but doesn't work? - Check your channels. There may be two of the same channel name. Somehow, this causes issues (No idea how as the IDs should be different but oh well) so just make sure to look out for it.
+Console isn't being disabled, even though it should be disabled? - make sure `true` is spelt correctly. `disableDiscordConsole` will be ignored if the value is not `false` or `true` (NOT case-sensitive).
+
+
+---
+
+
+# Credit
+
+Thank you to 'jschmidt-1' for cleaning up ServerTask. It has made things much easier and cleaner.
 
 
 ---

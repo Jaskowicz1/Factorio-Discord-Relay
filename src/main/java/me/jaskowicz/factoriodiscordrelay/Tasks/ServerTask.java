@@ -15,14 +15,20 @@ public class ServerTask extends TimerTask {
     // Credit to Github user jschmidt-1 for making this look better.
 
     private List<String> lastResults = new ArrayList<>();
+    private String lastSaid = "";
     
     private static String pretifyLogLine(String logLine) {
         return logLine.replaceAll("^.+\\[\\S+\\]\\s(.+)$", "$1");
     }
     
     private void sendMessage(String channelId, String message) {
-    	Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(channelId))
-        .sendMessage(message).queue();
+        // Prevents the discord bot from saying the same thing.
+        if(!message.equals(lastSaid)) {
+            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(channelId))
+                    .sendMessage(message).queue();
+        }
+
+    	lastSaid = message;
     }
 
     @Override
