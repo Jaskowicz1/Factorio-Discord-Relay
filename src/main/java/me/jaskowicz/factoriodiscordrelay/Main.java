@@ -102,7 +102,7 @@ public class Main {
             try {
                 scanner = new Scanner(file);
             } catch(FileNotFoundException e) {
-                System.out.println("Config file does not exist or can not be read! Please create the file that you specified if you wish to use it.");
+            	System.out.println("Config file does not exist or can not be read! Please create the file that you specified if you wish to use it.");
                 return;
             }
 

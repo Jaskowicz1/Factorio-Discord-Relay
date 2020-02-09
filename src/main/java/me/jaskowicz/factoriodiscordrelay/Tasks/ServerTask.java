@@ -3,11 +3,9 @@ package me.jaskowicz.factoriodiscordrelay.Tasks;
 import me.jaskowicz.factoriodiscordrelay.Main;
 import me.jaskowicz.factoriodiscordrelay.Settings.MAIN_SETTINGS;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.Activity;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -15,6 +13,15 @@ import java.util.*;
 public class ServerTask extends TimerTask {
 
     private List<String> lastResults = new ArrayList<>();
+    
+    private static String pretifyLogLine(String logLine) {
+    	return logLine.replaceAll("^.+\\[\\w\\]\\s(.+)$", "$1");
+    }
+    
+    private void sendMessage(String channelId, String message) {
+    	Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(channelId))
+        .sendMessage(message).queue();
+    }
 
     @Override
     public void run() {
@@ -53,39 +60,29 @@ public class ServerTask extends TimerTask {
                 if (!results.get(0).equals(lastResults.get(0))) {
                     for(int i = 0; i < results.size(); i++) {
                         if (results.get(i).contains("[JOIN]")) {
-                            //Main.playersOnline += 1;
+                        	String message = ":heavy_plus_sign: " + pretifyLogLine(results.get(i));
 
-                            //Main.jda.getPresence().setActivity(Activity.playing(Main.playersOnline + " players"));
-
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
-                                    .sendMessage(":heavy_plus_sign: " + results.get(i)).queue();
+                            sendMessage(Main.chatChannelID, message);
                             break;
                         } else if (results.get(i).contains("[LEAVE]")) {
-                            //Main.playersOnline -= 1;
+                        	String message = ":heavy_minus_sign: " + pretifyLogLine(results.get(i));
 
-                            //Main.jda.getPresence().setActivity(Activity.playing(Main.playersOnline + " players"));
-
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
-                                    .sendMessage(":heavy_minus_sign: " + results.get(i)).queue();
+                        	sendMessage(Main.chatChannelID, message);
                             break;
                         } else if (results.get(i).contains("[CHAT]")) {
-                            //String message = ":speech_balloon: [" + FormatUtils.formatTimeFromDate(new Date(System.currentTimeMillis())) + "] " + event.getPlayer().getName() + " » " + event.getMessage();
-                            String message = ":speech_balloon: " + results.get(i);
+                        	String message = ":speech_balloon: " + pretifyLogLine(results.get(i));
 
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.chatChannelID))
-                                    .sendMessage(message).queue();
+                        	sendMessage(Main.chatChannelID, message);
                             break;
                         } else if (results.get(i).contains("[COMMAND]")) {
                             String message = ":exclamation: " + results.get(i);
 
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
-                                    .sendMessage(message).queue();
+                            sendMessage(Main.consoleChannelID, message);
                             break;
                         } else if (results.get(i).contains("Cannot execute command.")) {
                             String message = ":warning: " + results.get(i);
 
-                            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(Main.consoleChannelID))
-                                    .sendMessage(message).queue();
+                            sendMessage(Main.consoleChannelID, message);
                         }
                     }
                 }
