@@ -30,7 +30,7 @@ Make sure your discord bot is in your server and has permissions to see and chat
 Once those values are edited correctly, save the config and run the server. If everything is setup correctly, you should see the bot come online!
 
 
-FDR is NOT a mod, it can be ran from anywhere.
+### FDR is NOT a mod, it can be ran from anywhere.
 
 
 ---
