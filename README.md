@@ -92,6 +92,8 @@ Console isn't being disabled, even though it should be disabled? - make sure `tr
 
 Thank you to 'jschmidt-1' for cleaning up ServerTask. It has made things much easier and cleaner.
 
+A major thanks to https://github.com/Kronos666/rkon-core for the Rcon code.
+
 
 ---
 
