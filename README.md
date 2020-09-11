@@ -61,7 +61,11 @@ rconHost: 127.0.0.1
 rconPort: 27015
 rconPassword: **********
 disableDiscordConsole: false
+ignoreStartWarning: false
+cleanMessages: false
 ```
+
+`cleanMessages` will disable achievements within your factorio server. If you wish to keep achievements on, I highly recommend you keep `cleanMessages` as false.
 
 If you have any issues, look at the Errors section. If it doesn't list your issue or you still don't understand, feel free to write a ticket under the `Issues` tab.
 
@@ -91,6 +95,7 @@ Console isn't being disabled, even though it should be disabled? - make sure `tr
 # Credit
 
 Thank you to 'jschmidt-1' for cleaning up ServerTask. It has made things much easier and cleaner.
+Thank you to 'AGuyNamedJens' for the Pull Request to fix achievements, making servers still eligible for achievements.
 
 A major thanks to https://github.com/Kronos666/rkon-core for the Rcon code.
 
