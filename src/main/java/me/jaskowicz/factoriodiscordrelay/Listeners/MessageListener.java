@@ -46,7 +46,11 @@ public class MessageListener extends ListenerAdapter {
 
                              */
 
-                            Main.rcon.command("/command " + event.getMessage().getContentRaw());
+                            if(!event.getMessage().getContentRaw().startsWith("/")) {
+                                Main.rcon.command("/command " + event.getMessage().getContentRaw());
+                            } else {
+                                Main.rcon.command(event.getMessage().getContentRaw());
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -59,7 +63,11 @@ public class MessageListener extends ListenerAdapter {
                     String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getNickname();
 
                     try {
-                        Main.rcon.command("[Discord] " + userName + " » " + event.getMessage().getContentRaw());
+                        if(MAIN_SETTINGS.cleanMessages) {
+                            Main.rcon.command("/silent-command game.print(\"[Discord] " + userName + " » " + event.getMessage().getContentRaw() + "\")");
+                        } else {
+                            Main.rcon.command("[Discord] " + userName + " » " + event.getMessage().getContentRaw());
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

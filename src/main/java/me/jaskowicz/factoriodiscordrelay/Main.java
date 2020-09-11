@@ -63,7 +63,11 @@ public class Main {
                         //String result = rcon.command("/command local count = 0\n" +
                         //        "for _ in pairs(game.connected_players) do count = count + 1 end\n" +
                         //        "return count");
-                        rcon.command("Factorio-Discord-Relay (FDR) has loaded.");
+                        if(MAIN_SETTINGS.cleanMessages) {
+                            rcon.command("/silent-command game.print(\"Factorio-Discord-Relay (FDR) has loaded.\")");
+                        } else {
+                            rcon.command("Factorio-Discord-Relay (FDR) has loaded.");
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -138,6 +142,38 @@ public class Main {
                                 MAIN_SETTINGS.consoleEnabled = false;
                             } else if(dataArray[1].equalsIgnoreCase("false")) {
                                 MAIN_SETTINGS.consoleEnabled = true;
+                            }
+                        } else if(dataArray[0].equals("ignoreStartWarning")) {
+                            if(dataArray[1].equalsIgnoreCase("true")) {
+                                MAIN_SETTINGS.ignoreStartWarning = true;
+                                System.out.println("WARNING: This will mean you can not gain achievements from here on out.");
+                            } else if(dataArray[1].equalsIgnoreCase("false")) {
+                                MAIN_SETTINGS.ignoreStartWarning = false;
+                            }
+                        } else if(dataArray[0].equals("cleanMessages")) {
+                            if(dataArray[1].equalsIgnoreCase("true")) {
+                                MAIN_SETTINGS.cleanMessages = true;
+                                if(!MAIN_SETTINGS.ignoreStartWarning) {
+
+                                    boolean statementFinished = false;
+                                    Scanner input = new Scanner(System.in);
+
+                                    while(!statementFinished) {
+                                        System.out.println("WARNING: This will mean you can not gain achievements from here on out. Are you sure you want to continue (Y/n)?");
+                                        System.out.println("(You can disable this in the config by turning ignoreStartWarning to true)");
+                                        String response = input.nextLine();
+
+                                        if (response.equalsIgnoreCase("y")) {
+                                            System.out.println("Continuing...");
+                                            statementFinished = true;
+                                        } else if (response.equalsIgnoreCase("n")) {
+                                            System.out.println("Exiting Factorio-Discord-Relay.");
+                                            System.exit(0);
+                                        }
+                                    }
+                                }
+                            } else if(dataArray[1].equalsIgnoreCase("false")) {
+                                MAIN_SETTINGS.cleanMessages = false;
                             }
                         }
                     } else if (dataArray.length < 2) {

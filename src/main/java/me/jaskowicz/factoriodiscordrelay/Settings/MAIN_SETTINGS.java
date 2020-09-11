@@ -9,4 +9,7 @@ public class MAIN_SETTINGS {
     public static String rconPassword = "password";
 
     public static boolean consoleEnabled = true;
+
+    public static boolean cleanMessages = false;
+    public static boolean ignoreStartWarning = false;
 }
