@@ -63,7 +63,7 @@ public class Main {
                         //String result = rcon.command("/command local count = 0\n" +
                         //        "for _ in pairs(game.connected_players) do count = count + 1 end\n" +
                         //        "return count");
-                        rcon.command("/silent-command game.print(\"Factorio-Discord-Relay (FDR) has loaded.\")");
+                        rcon.command("Factorio-Discord-Relay (FDR) has loaded.");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
