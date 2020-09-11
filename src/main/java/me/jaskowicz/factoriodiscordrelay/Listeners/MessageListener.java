@@ -59,7 +59,7 @@ public class MessageListener extends ListenerAdapter {
                     String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getNickname();
 
                     try {
-                        Main.rcon.command("/silent-command game.print(\"[Discord] " + userName + " » " + event.getMessage().getContentRaw() + "\")");
+                        Main.rcon.command("[Discord] " + userName + " » " + event.getMessage().getContentRaw());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
