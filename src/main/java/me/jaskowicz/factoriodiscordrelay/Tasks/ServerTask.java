@@ -34,9 +34,9 @@ public class ServerTask extends TimerTask {
 
             lastSaid = message;
         } catch(InsufficientPermissionException permEx) {
-            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to the Discord Channel. It seems that the bot lacks the permission: " + permEx.getPermission().getName());
+            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to " + channelId + ". It seems that the bot lacks the permission: " + permEx.getPermission().getName());
         } catch (Exception ex) {
-            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to the Discord Channel.");
+            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to " + channelId + ".");
         }
     }
 
