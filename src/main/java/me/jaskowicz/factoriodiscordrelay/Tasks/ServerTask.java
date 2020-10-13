@@ -2,7 +2,10 @@ package me.jaskowicz.factoriodiscordrelay.Tasks;
 
 import me.jaskowicz.factoriodiscordrelay.Main;
 import me.jaskowicz.factoriodiscordrelay.Settings.MAIN_SETTINGS;
+import me.jaskowicz.factoriodiscordrelay.Utils.ConsoleColour;
+import me.jaskowicz.factoriodiscordrelay.Utils.ConsoleLogging;
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 
 import java.io.File;
@@ -23,12 +26,18 @@ public class ServerTask extends TimerTask {
     
     private void sendMessage(String channelId, String message) {
         // Prevents the discord bot from saying the same thing.
-        if(!message.equals(lastSaid)) {
-            Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(channelId))
-                    .sendMessage(message).queue();
-        }
+        try {
+            if (!message.equals(lastSaid)) {
+                Objects.requireNonNull(Objects.requireNonNull(Main.jda.getGuildById(Main.guildID)).getTextChannelById(channelId))
+                        .sendMessage(message).queue();
+            }
 
-    	lastSaid = message;
+            lastSaid = message;
+        } catch(InsufficientPermissionException permEx) {
+            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to the Discord Channel. It seems that the bot lacks the permission: " + permEx.getPermission().getName());
+        } catch (Exception ex) {
+            ConsoleLogging.sendErrorMessage("An error occurred when trying to send a message to the Discord Channel.");
+        }
     }
 
     @Override
@@ -44,12 +53,12 @@ public class ServerTask extends TimerTask {
                 scanner = new Scanner(file);
                 reversedLinesFileReader = new ReversedLinesFileReader(file, StandardCharsets.UTF_8);
             } catch (IOException e) {
-                System.out.println("server.out file does not exist or can not be read! Please attempt to fix this.");
+                ConsoleLogging.sendErrorMessage("server.out file does not exist or can not be read! Please attempt to fix this.");
                 return;
             }
 
             if (!scanner.hasNextLine()) {
-                System.out.println("server.out file does not have any information!");
+                ConsoleLogging.sendErrorMessage("server.out file does not have any information!");
                 return;
             }
 
@@ -99,7 +108,7 @@ public class ServerTask extends TimerTask {
             lastResults.clear();
             lastResults.addAll(results);
         } else {
-            System.out.println("Server.out file is missing!");
+            ConsoleLogging.sendErrorMessage("server.out file is missing!");
         }
     }
 }

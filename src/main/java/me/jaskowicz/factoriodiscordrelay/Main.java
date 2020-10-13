@@ -4,7 +4,11 @@ import me.jaskowicz.factoriodiscordrelay.Exceptions.AuthenticationException;
 import me.jaskowicz.factoriodiscordrelay.Listeners.MessageListener;
 import me.jaskowicz.factoriodiscordrelay.Rcon.Rcon;
 import me.jaskowicz.factoriodiscordrelay.Settings.MAIN_SETTINGS;
+import me.jaskowicz.factoriodiscordrelay.Tasks.ServerCount;
 import me.jaskowicz.factoriodiscordrelay.Tasks.ServerTask;
+import me.jaskowicz.factoriodiscordrelay.Utils.ConsoleColour;
+import me.jaskowicz.factoriodiscordrelay.Utils.ConsoleLogging;
+import me.jaskowicz.factoriodiscordrelay.Utils.UpdateChecker;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -14,14 +18,12 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Timer;
+import java.util.*;
 
 public class Main {
 
@@ -32,6 +34,8 @@ public class Main {
     public static String chatChannelID = "";
     //public static List<String> disabledCommands = new ArrayList<>();
     public static Rcon rcon;
+
+    public static int M_SERVER_COUNT = 0;
 
     // This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
     // To view a copy of this license,
@@ -45,6 +49,29 @@ public class Main {
 
     public static void main(String[] args) {
 
+        try {
+            final Properties properties = new Properties();
+            properties.load(Main.class.getClassLoader().getResourceAsStream("project.properties"));
+
+            UpdateChecker.getVersion(version -> {
+                if (!properties.getProperty("version").equals(version)) {
+                    if(!System.getProperty("os.name").contains("Win")) {
+
+                        System.out.println(ConsoleColour.YELLOW + "There is an update available!\n" +
+                                "You are currently on: " + properties.getProperty("version") + "\n" +
+                                "The most recent update is: " + version + ConsoleColour.RESET);
+                    } else {
+                        System.out.println("There is an update available!\n" +
+                                "You are currently on: " + properties.getProperty("version") + "\n" +
+                                "The most recent update is: " + version);
+                    }
+                }
+            });
+        } catch(IOException e) {
+            e.printStackTrace();
+            ConsoleLogging.sendErrorMessage("Error when obtaining version.");
+        }
+
         readConfigFile();
 
         try {
@@ -53,6 +80,7 @@ public class Main {
             JDABuilder builder = new JDABuilder(AccountType.BOT);
 
             builder.setToken(discordBotToken);
+            builder.setActivity(Activity.playing("Loading..."));
             builder.addEventListeners(new MessageListener());
             builder.addEventListeners(new ListenerAdapter() {
                 @Override
@@ -63,35 +91,40 @@ public class Main {
                         //String result = rcon.command("/command local count = 0\n" +
                         //        "for _ in pairs(game.connected_players) do count = count + 1 end\n" +
                         //        "return count");
+
+                        String count = rcon.command("/players online count");
+
+                        //M_SERVER_COUNT = Integer.parseInt(count);
+                        builder.setActivity(Activity.playing(count));
+
                         if(MAIN_SETTINGS.cleanMessages) {
                             rcon.command("/silent-command game.print(\"Factorio-Discord-Relay (FDR) has loaded.\")");
                         } else {
                             rcon.command("Factorio-Discord-Relay (FDR) has loaded.");
                         }
+
+                        System.out.println(ConsoleColour.GREEN + "Bot loaded successfully!" + ConsoleColour.RESET);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             });
 
             try {
                 jda = builder.build();
-                System.out.println("Bot loaded successfully!");
+                System.out.println("Bot is set to load!");
             } catch (LoginException e) {
                 e.printStackTrace();
-                System.out.println("Bot failed to load. Error is shown in console.");
+                ConsoleLogging.sendErrorMessage("Bot failed to load. Error is shown.");
             }
 
             Timer timer = new Timer();
             timer.schedule(new ServerTask(), 0, 500);
-
-            // Display the result in the console
-            //System.out.println(result);
+            timer.schedule(new ServerCount(), 0, 1500);
         } catch (IOException | AuthenticationException ex) {
             ex.printStackTrace();
+            ConsoleLogging.sendErrorMessage("Failed to connect to the RCON server.");
         }
-
     }
 
     public static void readConfigFile() {
@@ -146,7 +179,7 @@ public class Main {
                         } else if(dataArray[0].equals("ignoreStartWarning")) {
                             if(dataArray[1].equalsIgnoreCase("true")) {
                                 MAIN_SETTINGS.ignoreStartWarning = true;
-                                System.out.println("WARNING: This will mean you can not gain achievements from here on out.");
+                                ConsoleLogging.sendWarningMessage("This will mean you can not gain achievements from here on out.");
                             } else if(dataArray[1].equalsIgnoreCase("false")) {
                                 MAIN_SETTINGS.ignoreStartWarning = false;
                             }
@@ -159,8 +192,8 @@ public class Main {
                                     Scanner input = new Scanner(System.in);
 
                                     while(!statementFinished) {
-                                        System.out.println("WARNING: This will mean you can not gain achievements from here on out. Are you sure you want to continue (Y/n)?");
-                                        System.out.println("(You can disable this in the config by turning ignoreStartWarning to true)");
+                                        ConsoleLogging.sendWarningMessage("This will mean you can not gain achievements from here on out. Are you sure you want to continue (Y/n)?");
+                                        ConsoleLogging.sendWarningMessage("(You can disable this in the config by turning ignoreStartWarning to true)");
                                         String response = input.nextLine();
 
                                         if (response.equalsIgnoreCase("y")) {
@@ -176,11 +209,11 @@ public class Main {
                                 MAIN_SETTINGS.cleanMessages = false;
                             }
                         }
-                    } else if (dataArray.length < 2) {
+                    } /* else if (dataArray.length < 2) {
                         System.out.println("Line has too little arguments on it. Ignoring line.");
                     } else {
                         System.out.println("Line has too many arguments on it. Ignoring line.");
-                    }
+                    } */
                 } else {
                     System.out.println("Config file does not have any information!");
                     return;
@@ -193,13 +226,13 @@ public class Main {
                 boolean created = file.createNewFile();
 
                 if(created) {
-                    System.out.println("The file has been created!");
+                    System.out.println("I have created the config file for you!");
                 } else {
-                    System.out.println("The file failed to be created. I may be lacking permissions to create files, try executing me as administrator.");
+                    ConsoleLogging.sendErrorMessage("The file failed to be created. I may be lacking permissions to create files, try executing me as administrator.");
                     return;
                 }
 
-                System.out.println("I have created the config file for you! Putting default data in...");
+                System.out.println("Putting default data in...");
 
                 FileWriter fileWriter = new FileWriter("FactorioDiscordRelayConfig.txt");
                 fileWriter.write("botToken: <BOT_TOKEN>\n");
@@ -217,7 +250,7 @@ public class Main {
                 return;
 
             } catch (Exception ex) {
-                System.out.println("An error occurred when trying to create the file.");
+                ConsoleLogging.sendErrorMessage("An error occurred when trying to create the file.");
                 return;
             }
         }

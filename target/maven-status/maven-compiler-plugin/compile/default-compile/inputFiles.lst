@@ -1,8 +1,12 @@
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Settings\MAIN_SETTINGS.java
+C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Utils\UpdateChecker.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Main.java
+C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Utils\ConsoleLogging.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Listeners\MessageListener.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Exceptions\AuthenticationException.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Exceptions\MalformedPacketException.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Rcon\RconPacket.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Tasks\ServerTask.java
+C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Utils\ConsoleColour.java
+C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Tasks\ServerCount.java
 C:\Users\Archie\Desktop\Intellij Projects\FactorioDiscordRelay\src\main\java\me\jaskowicz\factoriodiscordrelay\Rcon\Rcon.java

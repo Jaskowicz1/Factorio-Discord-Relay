@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbb08a6e-82f6-4e5c-ae51-422e18024c0b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Settings/MAIN_SETTINGS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Listeners/MessageListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/factoriodiscordrelay-1.1-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/factoriodiscordrelay-1.1-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/factoriodiscordrelay-1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/factoriodiscordrelay-1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/jaskowicz/factoriodiscordrelay/Tasks/ServerTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-factoriodiscordrelay-1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-factoriodiscordrelay-1.1.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +40,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MinecraftDiscordRelay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
