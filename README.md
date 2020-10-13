@@ -80,8 +80,12 @@ There are different types of errors you may get, or issues where you don't even 
 ### Actual errors
 
 ConnectionTimedOut - Rcon failed to connect in time or couldn't find the Rcon server. Check the port and/or host.
+
 AuthenticationException - Credentials for Rcon are incorrect. Correct the credentials.
+
 IOException - Either Rcon failed to send a message or a file threw an error being read. If it's the case of files (the program should say), check the permissions of that file and the program.
+
+NumberFormatException - The thing you put in that was meant to be a number (most likely rconPort) was not a valid number.
 
 ### Hidden errors
 
