@@ -53,7 +53,10 @@ public class Main {
             final Properties properties = new Properties();
             properties.load(Main.class.getClassLoader().getResourceAsStream("project.properties"));
 
+            System.out.println("Loading FDR at version: " + properties.getProperty("version"));
+
             UpdateChecker.getVersion(version -> {
+
                 if (!properties.getProperty("version").equals(version)) {
                     if(!System.getProperty("os.name").contains("Win")) {
 
