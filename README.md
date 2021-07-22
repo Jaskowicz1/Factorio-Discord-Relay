@@ -90,6 +90,7 @@ NumberFormatException - The thing you put in that was meant to be a number (most
 ### Hidden errors
 
 Bot loads but doesn't work? - Check your channels. There may be two of the same channel name. Somehow, this causes issues (No idea how as the IDs should be different but oh well) so just make sure to look out for it.
+
 Console isn't being disabled, even though it should be disabled? - make sure `true` is spelt correctly. `disableDiscordConsole` will be ignored if the value is not `false` or `true` (NOT case-sensitive).
 
 
