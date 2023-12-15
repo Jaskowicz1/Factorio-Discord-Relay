@@ -1,6 +1,10 @@
 # Factorio-Discord-Relay
 Factorio-Discord-Relay (FDR) is a .jar (NOT a Factorio mod) which allows you to connect your Factorio server to discord (via discord bot) and relay information from Factorio to Discord.
 
+# This is now old and deprecated!
+Please use my [newest version here](https://github.com/Jaskowicz1/fdr-remake). I simply do not want to maintain this version anymore as it deserves to be remade in a better way.
+
+
 Documentation sections listed here:
  - Requirements
  - Installation
